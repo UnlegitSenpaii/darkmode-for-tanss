@@ -2,14 +2,14 @@
 
 I got tired of looking at the eye bleaching white of the ticketsystem.
 
-**Required: https://darkreader.org/<br>**
+**Requirements:** [Dark Reader](https://darkreader.org/)
 
-Darkmode Settings for TANSS Ticket System<br>
-#### Testing Enviroment 
-MAJ Firefox Version: 110 <br>
-MAJ TANSS Verion: 5.8 <br>
+## Darkmode Settings for TANSS Ticket System
+### Testing Enviroment 
+- Firefox Version: 110 
+- TANSS Version: 5.8 
 
-If any issues occour, feel free to create a issue in the issues page.
+If any issues occur, feel free to create an issue on the [Issues page](https://github.com/UnlegitSenpaii/darkmode-for-tanss/issues).
 
 ### How to apply
 
@@ -21,8 +21,8 @@ Don't forget to replace "DOMAIN OF TANSS TICKET SYSTEM HERE" with your domain.
 In the extension settings, you can change the blacklist to a whitelist and add the domain of the ticketsystem there.<br>
 Dark Reader > Websitelist > Only Invert > Your Ticket System Domain here > Add Website to list
 
-#### Additional Settings
-If the font doesnt fit, change it in dark reader to monospace and +0.1 text strength.<br>
+### Additional Settings
+- If the font doesn't fit, change it in Dark Reader to monospace and +0.1 text strength.<br>
 
 ### Dark Reader Config
 ```
@@ -88,4 +88,3 @@ a:link, a:visited, a:active {
 ================================
 
 ```
-darkmode für tanss ticketsystem
