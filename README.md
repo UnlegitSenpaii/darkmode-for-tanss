@@ -14,7 +14,8 @@ If any issues occour, feel free to create a issue in the issues page.
 ### How to apply
 
 Open the Dark Reader Dev Tools and paste the CSS found below at the top.<br>
-Dynamic Theme Required.
+Dynamic Theme Required.<br>
+Don't forget to replace "DOMAIN OF TANSS TICKET SYSTEM HERE" with your domain.
 
 ### I dont want dark reader on any other websites :(
 In the extension settings, you can change the blacklist to a whitelist and add the domain of the ticketsystem there.<br>
@@ -27,7 +28,7 @@ If the font doesnt fit, change it in dark reader to monospace and +0.1 text stre
 ```
 ================================
 
-DOMAIN OF TANSS TICKET SYSTEM
+DOMAIN OF TANSS TICKET SYSTEM HERE
 
 CSS
 * {
