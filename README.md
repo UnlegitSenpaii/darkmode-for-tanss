@@ -86,5 +86,85 @@ a:link, a:visited, a:active {
 }
 
 ================================
+```
+
+### Violent Monkey Config
+```
+// ==UserScript==
+// @name        TANSS DARK MODE
+// @namespace   Violentmonkey Scripts
+// @match       *://ticket.hostname.de/*
+// @grant       none
+// @version     1.0
+// @author      github.com/UnlegitSenpaii
+// @description 15.04.2024, 15:37:08
+// ==/UserScript==
+
+function addCustomStyles() {
+  const css = `
+* {
+  scrollbar-color: rgba(55, 55, 143, 0.8) rgba(33, 33, 33, 0.33) !important;
+}
+.tns-tep-day-time-ruler .hour-text.full-hour {
+  fill: white !important;
+  font-size: 12px;
+}
+.tns-tep-day-time-ruler .hour-line.full-hour {
+  stroke: hsla(0, 20%, 85%, 0.8) !important;
+}
+.tns-tep-day-time-ruler .hour-line.half-hour {
+  stroke: hsla(0, 20%, 85%, 0.33) !important;
+}
+.tns-ticket > .ticket-row > .ticket-columns > .ticket-info .ticket-first-row .ticket-type-name {
+  display: inline-block;
+  padding-right: 3px;
+  color: #7469ff !important;
+}
+.tns-ticket > .ticket-row > .ticket-columns > .ticket-info .ticket-first-row .ticket-first-row-style .ticket-remitter-department-name, .tns-ticket > .ticket-row > .ticket-columns > .ticket-info .ticket-first-row .ticket-first-row-style .ticket-remitter-name {
+  display: inline-block;
+  padding-right: 3px;
+  color: #7469ff !important;
+}
+a:link, a:visited, a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration-color: currentcolor;
+}
+.tns-portal-box-tickets > main > .ticket > .ticket-department {
+  background-color: rgb(40, 31, 143) !important;
+  color: rgb(255, 255, 255) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+.portalBoxInnerHead {
+  background-image: none !important;
+  background-color: rgba(20, 50, 140, 0.5) !important;
+}
+.naviLeiste {
+  background-color: rgba(40, 31, 143, 0.6) !important;
+  color: rgb(255, 255, 255) !important;
+}
+.tns-horizontal-menu-portalbox {
+  background-color: rgba(50, 50, 120, 0.5) !important;
+}
+#v4_topContainer {
+  background-image: none;
+  background-color: rgba(50, 50, 50, 0.5) !important;
+  border-color: currentcolor !important;
+}
+#v4_topRowContainer {
+  background-image: none !important;
+  background-color: rgba(50, 50, 50, 0.5) !important;
+  border-bottom-color: rgb(115, 107, 95) !important;
+}
+  `;
+
+  const styleElement = document.createElement('style');
+  styleElement.type = 'text/css';
+  styleElement.appendChild(document.createTextNode(css));
+
+  document.head.appendChild(styleElement);
+}
+
+// Call the function to add the custom styles
+addCustomStyles();
 
 ```
