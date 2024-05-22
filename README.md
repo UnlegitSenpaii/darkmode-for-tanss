@@ -1,4 +1,4 @@
-# Darkmode for TANSS
+# Darkmode for TANSS Ticket-System
 
 I got tired of looking at the eye bleaching white of the ticketsystem.
 
