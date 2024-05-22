@@ -3,10 +3,9 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.1
+// @version     1.2
 // @author      github.com/UnlegitSenpaii
-// @description 22.05.2024, 10:58
-// @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/main/violentmonkey-script.js
+// @description Funny TANSS Ticket-System Mods
 // ==/UserScript==
 
 function addCustomStyles() {
@@ -77,6 +76,16 @@ a:link, a:visited, a:active {
   background-color: rgba(50, 50, 50, 0.5) !important;
   border-bottom-color: rgb(115, 107, 95) !important;
 }
+
+/* Hover-Animation für ticket-columns */
+.ticket-columns {
+  transition: box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.ticket-columns:hover {
+  transform: scale(1.005);
+  box-shadow: 0 0 15px rgb(32, 25, 114);
+}
   `;
 
   const styleElement = document.createElement('style');
@@ -91,13 +100,13 @@ addCustomStyles();
 function parseDate(dateString) {
   const parts = dateString.split('.');
   const day = parseInt(parts[0], 10);
-  const month = parseInt(parts[1], 10) - 1; 
+  const month = parseInt(parts[1], 10) - 1;
   let year = parseInt(parts[2], 10);
-  
+
   if (year < 100) {
     year += 2000;
   }
-  
+
   return new Date(year, month, day);
 }
 
@@ -132,9 +141,9 @@ function CheckTickets() {
   const tickets = document.querySelectorAll(".ticket");
 
   tickets.forEach(ticket => {
-    if (ticket.classList.contains("urgent")) 
+    if (ticket.classList.contains("urgent"))
       return;
-    
+
     const dateElement = ticket.querySelector(".ticket-creation-date");
     const titleElement = ticket.querySelector(".ticket-title a");
     const columnsElement = ticket.querySelector(".ticket-columns");
