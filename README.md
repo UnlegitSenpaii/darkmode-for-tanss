@@ -13,7 +13,7 @@ If any issues occur, feel free to create an issue on the [Issues page](https://g
 
 ### How to apply
 - Allow Dark Reader to apply darkmode on your ticketsystem site (if not already done)
-- Install the Violent Monkey User Script from [URL](https://github.com/UnlegitSenpaii/darkmode-for-tanss/blob/main/violentmonkey-script.js)
+- Install the Violent Monkey User Script from [URL](https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/main/violentmonkey-script.js)
 - Edit the Violent Monkey Script and go to the Settings Page
 - Edit the @match Rule to include your ticketsystem url, a valid url would be: `*://ticket.senpaii.dev/*`
 - Refresh your ticketsystem webpage
