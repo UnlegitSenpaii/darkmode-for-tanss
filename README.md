@@ -7,7 +7,7 @@ I got tired of looking at the eye bleaching white of the ticketsystem.
 ## Darkmode Settings for TANSS Ticket System
 ### Testing Enviroment 
 - Firefox Version: 126
-- TANSS Version: 5.8 
+- TANSS Version: 10.2
 
 If any issues occur, feel free to create an issue on the [Issues page](https://github.com/UnlegitSenpaii/darkmode-for-tanss/issues).
 
