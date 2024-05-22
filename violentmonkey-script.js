@@ -6,6 +6,7 @@
 // @version     1.1
 // @author      github.com/UnlegitSenpaii
 // @description 22.05.2024, 10:58
+// @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/main/violentmonkey-script.js
 // ==/UserScript==
 
 function addCustomStyles() {
