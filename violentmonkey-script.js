@@ -5,6 +5,7 @@
 // @grant       none
 // @version     1.2
 // @author      github.com/UnlegitSenpaii
+// @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/main/violentmonkey-script.js
 // @description Funny TANSS Ticket-System Mods
 // ==/UserScript==
 
