@@ -90,4 +90,5 @@ a:link, a:visited, a:active {
 
 ### Violent Monkey Config
 See https://github.com/UnlegitSenpaii/darkmode-for-tanss/blob/main/violentmonkey-script.js
+
 Edit the @match rule in the Settings tab with the URL of your ticket system. An example can be found in script.
