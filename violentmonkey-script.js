@@ -158,10 +158,10 @@ function highlightTicketForCompany(element) {
 
 function CheckTickets() {
     const tickets = document.querySelectorAll(".ticket");
-    const currentSelectedCompany = document.querySelector(".firmenName")?.textContent.split(" - ")[1].trim();
+    const currentSelectedCompany = document.querySelector(".firmenName").textContent.split(" - ")[1].trim();
 
     tickets.forEach(ticket => {
-        if (ticket.classList.contains("urgent"))
+        if (ticket.classList.contains("urgent") || ticket.classList.contains("highlight"))
             return;
 
         const dateElement = ticket.querySelector(".ticket-creation-date");
@@ -184,6 +184,7 @@ function CheckTickets() {
             }
             else if (isHighlighted) {
                 highlightTicketForCompany(columnsElement);
+                ticket.classList.add("highlight");
             }
         }
     });
