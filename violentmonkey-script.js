@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.5
+// @version     1.6
 // @author      github.com/UnlegitSenpaii
 // @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/refs/heads/customized/violentmonkey-script.js
 // @description Funny TANSS Ticket-System Mods
@@ -441,6 +441,11 @@ function createAndShowModal() {
     }
   });
 }
+
+const interval = 60 * 1000; // 60 Seconds
+setInterval(CheckTickets, interval);
+
+setTimeout(CheckTickets, 3500); //Initial Delay -- Wait for tickets to load
 
 function generateModalHtml() {
   return `
