@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.8
+// @version     1.8.1
 // @author      github.com/UnlegitSenpaii
 // @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/refs/heads/customized/violentmonkey-script.js
 // @description TANSS Ticket-System Quality of Life Improvements
@@ -1055,6 +1055,9 @@ function createAndShowLeistungModal() {
                     submitBtn.textContent = 'Wird erstellt...';
                 }
                 try {
+
+                    const isFromFernwartung = urlParams.get("useFW") == null;
+
                     const leistungTypEl = document.getElementById('leistungTyp');
                     const leistungTyp = leistungTypEl?.value || 'Administration';
                     const leistungText = document.getElementById('leistungText')?.value || '';
@@ -1100,8 +1103,11 @@ function createAndShowLeistungModal() {
                     }
 
                     if (document.getElementById('text')) {
-                        document.getElementById('text').value = leistungText;
-                    } else {
+                        const shouldIgnore = isFromFernwartung && leistungText === '';
+                        if(!shouldIgnore)
+                            document.getElementById('text').value = leistungText;
+                    } 
+                    else {
                         console.error('text field not found in form');
                         success = false;
                     }
@@ -1284,6 +1290,8 @@ if (
     console.log('Creating and showing modal');
     createAndShowModal();
 }
+
+
 
 if (
     urlParams.get('section') === 'leistungen' &&
