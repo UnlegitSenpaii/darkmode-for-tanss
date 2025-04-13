@@ -21,24 +21,24 @@
  * @returns {Function} - Wrapped function with error handling
  */
 function safeExecute(fn, fnName = "Unnamed Function", isCritical = false) {
-  return function(...args) {
-    try {
-      return fn(...args);
-    } catch (error) {
-      console.error(`[TANSS QOL] Error in ${fnName}:`, error);
-      if (isCritical) {
-        // Only show alerts for critical functions if they fail
-        alert(`Ein kritischer Fehler ist aufgetreten in ${fnName}. Details siehe Konsole.`);
-      }
-      // Return a safe default value based on the expected return type
-      if (fnName.toLowerCase().includes('get') || fnName.toLowerCase().includes('is') || fnName.toLowerCase().includes('has')) {
-        return null; // For getter functions
-      } else if (fnName.toLowerCase().includes('set') || fnName.toLowerCase().includes('create') || fnName.toLowerCase().includes('do')) {
-        return false; // For action functions
-      }
-      return undefined;
-    }
-  };
+    return function (...args) {
+        try {
+            return fn(...args);
+        } catch (error) {
+            console.error(`[TANSS QOL] Error in ${fnName}:`, error);
+            if (isCritical) {
+                // Only show alerts for critical functions if they fail
+                alert(`Ein kritischer Fehler ist aufgetreten in ${fnName}. Details siehe Konsole.`);
+            }
+            // Return a safe default value based on the expected return type
+            if (fnName.toLowerCase().includes('get') || fnName.toLowerCase().includes('is') || fnName.toLowerCase().includes('has')) {
+                return null; // For getter functions
+            } else if (fnName.toLowerCase().includes('set') || fnName.toLowerCase().includes('create') || fnName.toLowerCase().includes('do')) {
+                return false; // For action functions
+            }
+            return undefined;
+        }
+    };
 }
 
 function addCustomStyles() {
@@ -581,7 +581,7 @@ async function DoTicketCustomerSelect(containerRow, replacement) {
 
 async function DoLeistungTypSelection(leistungTyp, maxAttempts = 3) {
     console.log("DoLeistungTypSelection for ", leistungTyp);
- 
+
     const lstTypDiv = document.getElementById('lstTypDiv');
     if (!lstTypDiv) {
         console.error("lstTypDiv element not found");
@@ -592,13 +592,13 @@ async function DoLeistungTypSelection(leistungTyp, maxAttempts = 3) {
     if (!customSelectButton) {
         console.error("Custom select button not found within lstTypDiv");
         return false;
-    } 
+    }
     const clickSuccess = await safeClick(customSelectButton);
     if (!clickSuccess) {
         console.error("Could not click custom select button");
         return false;
     }
- 
+
     let attempt = 0;
     let dropdown = null;
 
@@ -701,7 +701,7 @@ async function SetTicketData(isProjektAbrechnung, title, description, abteilung,
                     console.log(`Retry ${i} for setting abteilung`);
                     await new Promise(resolve => setTimeout(resolve, 800 * i));
                 }
- 
+
                 const abteilungIndex = ticketColumnsLeft['ticketZuweisungAbteilung'];
                 if (abteilungIndex !== undefined && containerRowsLeft[abteilungIndex]) {
                     success = await DoTicketDataJobDropDown(containerRowsLeft[abteilungIndex], abteilung);
@@ -717,7 +717,7 @@ async function SetTicketData(isProjektAbrechnung, title, description, abteilung,
                     console.log(`Retry ${i} for setting type`);
                     await new Promise(resolve => setTimeout(resolve, 800 * i));
                 }
- 
+
                 const typeIndex = ticketColumnsLeft['ticketTyp'];
                 if (typeIndex !== undefined && containerRowsLeft[typeIndex]) {
                     success = await DoTicketDataJobDropDown(containerRowsLeft[typeIndex], type);
@@ -811,7 +811,7 @@ function createAndShowModal() {
 
         // Create modal HTML
         const modalHtml = generateModalHtml();
- 
+
         try {
             document.body.insertAdjacentHTML('beforeend', modalHtml);
         } catch (error) {
@@ -870,7 +870,7 @@ function createAndShowModal() {
                     submitBtn.textContent = 'Wird erstellt...';
                 }
 
-                try { 
+                try {
                     const ticketType = document.getElementById('ticketType')?.value || 'Störung';
                     const ticketName = document.getElementById('ticketName')?.value || '';
                     const bestellnummer = document.getElementById('bestellnummer')?.value || '';
@@ -997,7 +997,7 @@ function createAndShowLeistungModal() {
 
         // Create modal HTML
         const modalHtml = generateLeistungModalHtml();
- 
+
         try {
             document.body.insertAdjacentHTML('beforeend', modalHtml);
         } catch (error) {
@@ -1041,20 +1041,20 @@ function createAndShowLeistungModal() {
                 console.error('Leistung modal not found after insertion');
             }
         }, 50);
- 
+
         const leistungFormEl = document.getElementById('createLeistungForm');
         if (leistungFormEl) {
             leistungFormEl.addEventListener('submit', async function (event) {
                 if (event) {
                     event.preventDefault();
                 }
- 
+
                 const submitBtn = leistungFormEl.querySelector('button[type="submit"]');
                 if (submitBtn) {
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Wird erstellt...';
                 }
-                try { 
+                try {
                     const leistungTypEl = document.getElementById('leistungTyp');
                     const leistungTyp = leistungTypEl?.value || 'Administration';
                     const leistungText = document.getElementById('leistungText')?.value || '';
@@ -1071,7 +1071,7 @@ function createAndShowLeistungModal() {
                     if (modal) {
                         modal.style.display = 'none';
                     }
- 
+
                     let success = true;
                     // Set leistung type using the button click approach (similar to ticket assistant)
                     const leistungTypSuccess = await DoLeistungTypSelection(leistungTyp);
@@ -1079,7 +1079,7 @@ function createAndShowLeistungModal() {
                         console.error(`Failed to set Leistungstyp to "${leistungTyp}"`);
                         success = false;
                     }
- 
+
                     const timeFields = {
                         vonStd: vonStunde,
                         vonMin: vonMinute,
@@ -1098,7 +1098,7 @@ function createAndShowLeistungModal() {
                             success = false;
                         }
                     }
-                    
+
                     if (document.getElementById('text')) {
                         document.getElementById('text').value = leistungText;
                     } else {
@@ -1152,28 +1152,29 @@ function createAndShowLeistungModal() {
                         }
                     }
 
-                    setTimeout(() => {
-                        le2_fa_toggle();
-                        setTimeout(() => { 
-                            const le2FirmaSuche = document.getElementById('le2FirmaSuche');
-                            if (le2FirmaSuche) {
-                                le2FirmaSuche.focus();
-                            } else {
-                                console.error('le2FirmaSuche input not found after timeout');
-                                success = false;
-                            }
-                        }, 1500);
-                    }, 500);
-
+                    if (urlParams.get("neuesFenster") === "1") {
+                        setTimeout(() => {
+                            le2_fa_toggle();
+                            setTimeout(() => {
+                                const le2FirmaSuche = document.getElementById('le2FirmaSuche');
+                                if (le2FirmaSuche) {
+                                    le2FirmaSuche.focus();
+                                } else {
+                                    console.error('le2FirmaSuche input not found after timeout');
+                                    success = false;
+                                }
+                            }, 1500);
+                        }, 500);
+                    }
 
                     if (!success) {
                         console.error('Some fields could not be set in the form');
                         alert('Es gab ein Problem beim Ausfüllen des Formulars. Bitte überprüfen Sie die Eingaben.');
- 
+
                         if (modal) {
                             modal.style.display = 'block';
                         }
- 
+
                         if (submitBtn) {
                             submitBtn.disabled = false;
                             submitBtn.textContent = 'Leistung erstellen';
@@ -1182,7 +1183,7 @@ function createAndShowLeistungModal() {
                 } catch (error) {
                     console.error('Error in leistung form submission:', error);
                     alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
- 
+
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.textContent = 'Leistung erstellen';
@@ -1192,7 +1193,7 @@ function createAndShowLeistungModal() {
         } else {
             console.error('Leistung form element not found');
         }
- 
+
         const closeBtn = document.querySelector('#createLeistungModal .close');
         if (closeBtn) {
             closeBtn.addEventListener('click', function () {
@@ -1202,7 +1203,7 @@ function createAndShowLeistungModal() {
                 }
             });
         }
- 
+
         window.addEventListener('click', function (event) {
             const modal = document.getElementById('createLeistungModal');
             if (modal && event && event.target === modal) {
@@ -1283,7 +1284,7 @@ if (
     console.log('Creating and showing modal');
     createAndShowModal();
 }
- 
+
 if (
     urlParams.get('section') === 'leistungen' &&
     urlParams.get('sub') === 'edit' &&
@@ -1292,5 +1293,5 @@ if (
     console.log('Creating and showing leistung modal');
     setTimeout(() => {
         createAndShowLeistungModal();
-    }, 500); 
+    }, 500);
 }
