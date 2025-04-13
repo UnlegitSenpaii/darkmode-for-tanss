@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.8
+// @version     1.8.2
 // @author      github.com/UnlegitSenpaii
 // @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/refs/heads/customized/violentmonkey-script.js
 // @description TANSS Ticket-System Quality of Life Improvements
