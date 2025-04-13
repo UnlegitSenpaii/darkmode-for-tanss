@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.8.2
+// @version     1.8.3
 // @author      github.com/UnlegitSenpaii
 // @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/refs/heads/customized/violentmonkey-script.js
 // @description TANSS Ticket-System Quality of Life Improvements
@@ -1104,7 +1104,7 @@ function createAndShowLeistungModal() {
 
                     if (document.getElementById('text')) {
                         const shouldIgnore = isFromFernwartung && leistungText.length < 2;
-                        if(!shouldIgnore)
+                        if(shouldIgnore)
                             document.getElementById('text').value = leistungText;
                     } 
                     else {
