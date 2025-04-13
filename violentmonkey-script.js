@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.8.1
+// @version     1.8
 // @author      github.com/UnlegitSenpaii
 // @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/refs/heads/customized/violentmonkey-script.js
 // @description TANSS Ticket-System Quality of Life Improvements
@@ -1038,7 +1038,7 @@ function createAndShowLeistungModal() {
                     leistungTextEl.focus();
                 }
             } else {
-                console.error('Leistung modal not found after insertion');
+                console.error('Leistung modal not found after insertion');1
             }
         }, 50);
 
@@ -1103,7 +1103,7 @@ function createAndShowLeistungModal() {
                     }
 
                     if (document.getElementById('text')) {
-                        const shouldIgnore = isFromFernwartung && leistungText === '';
+                        const shouldIgnore = isFromFernwartung && leistungText.length < 2;
                         if(!shouldIgnore)
                             document.getElementById('text').value = leistungText;
                     } 
@@ -1158,7 +1158,7 @@ function createAndShowLeistungModal() {
                         }
                     }
 
-                    if (urlParams.get("neuesFenster") === "1") {
+                    if (urlParams.get("neuesFenster") === "1" && !isFromFernwartung) {
                         setTimeout(() => {
                             le2_fa_toggle();
                             setTimeout(() => {
