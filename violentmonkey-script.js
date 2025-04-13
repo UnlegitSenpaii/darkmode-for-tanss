@@ -1056,7 +1056,7 @@ function createAndShowLeistungModal() {
                 }
                 try {
 
-                    const isFromFernwartung = urlParams.get("useFW") == null;
+                    const isFromFernwartung = urlParams.get("useFW") != null;
 
                     const leistungTypEl = document.getElementById('leistungTyp');
                     const leistungTyp = leistungTypEl?.value || 'Administration';
@@ -1103,8 +1103,8 @@ function createAndShowLeistungModal() {
                     }
 
                     if (document.getElementById('text')) {
-                        const shouldIgnore = isFromFernwartung && leistungText.length < 2;
-                        if(shouldIgnore)
+                        const shouldIgnore = isFromFernwartung && leistungText.length <= 2;
+                        if(!shouldIgnore)
                             document.getElementById('text').value = leistungText;
                     } 
                     else {
@@ -1291,15 +1291,21 @@ if (
     createAndShowModal();
 }
 
-
-
 if (
     urlParams.get('section') === 'leistungen' &&
     urlParams.get('sub') === 'edit' &&
     urlParams.get('init') === '1'
 ) {
-    console.log('Creating and showing leistung modal');
     setTimeout(() => {
+        const isFromFernwartung = urlParams.get("useFW") != null;
+        const hasTextContent = document.getElementById('text')?.textContent.length > 2;
+
+        if(isFromFernwartung && hasTextContent) {
+            console.log('Skipping modal creation due to existing text content');
+            return;
+        }
+
+        console.log('Creating and showing leistung modal');
         createAndShowLeistungModal();
     }, 500);
 }
