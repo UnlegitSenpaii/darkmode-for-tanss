@@ -43,7 +43,7 @@ function safeExecute(fn, fnName = "Unnamed Function", isCritical = false) {
 
 function addCustomStyles() {
     const css = `
-    
+
     * {
       scrollbar-color: rgba(55, 55, 143, 0.8) rgba(33, 33, 33, 0.33) !important;
     }
@@ -76,19 +76,19 @@ function addCustomStyles() {
       color: rgb(255, 255, 255) !important;
       font-family: Arial, Helvetica, sans-serif !important;
     }
-    
+
     .tns-portal-box-tickets > main > .ticket > .ticket-type {
       background-color: rgb(40, 31, 143) !important;
       color: rgb(255, 255, 255) !important;
       font-family: Arial, Helvetica, sans-serif !important;
     }
-    
+
     .lt-table > tbody > tr.lt-table-sub-header > td {
       background-color: rgb(40, 31, 143) !important;
       color: rgb(255, 255, 255) !important;
       font-family: Arial, Helvetica, sans-serif !important;
     }
-    
+
     .portalBoxInnerHead {
       background-image: none !important;
       background-color: rgba(20, 50, 140, 0.5) !important;
@@ -110,21 +110,21 @@ function addCustomStyles() {
       background-color: rgba(50, 50, 50, 0.5) !important;
       border-bottom-color: rgb(115, 107, 95) !important;
     }
-    
+
     /* Hover-Animation für ticket-columns */
     .ticket-columns {
       transition: box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
     }
-    
+
     .ticket-columns:hover {
       transform: scale(1.005);
       box-shadow: 0 0 15px rgb(64, 50, 228);
     }
-    
+
     .ticket-columns {
       transition: box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
     }
-    
+
     .ticket-columns:hover {
       transform: scale(1.005);
       box-shadow: 0 0 15px rgb(64, 50, 228);
@@ -138,7 +138,7 @@ function addCustomStyles() {
           width: 50%;
           margin: auto;
       }
-      .custom-modal-content .modal-header, 
+      .custom-modal-content .modal-header,
       .custom-modal-content .modal-footer {
           background-color: rgba(20, 50, 140, 0.5) !important;
           border-bottom: none !important;
@@ -151,7 +151,7 @@ function addCustomStyles() {
           text-align: center;
           width: 100%;
           /* Text glow effect */
-          text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);  
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
       }
       .custom-modal-content .form-control {
           background-color: rgba(50, 50, 50, 0.5) !important;
@@ -166,7 +166,7 @@ function addCustomStyles() {
       .custom-modal-content .form-control::placeholder {
           color: rgba(255, 255, 255, 0.7) !important;
       }
-      .custom-modal-content label { 
+      .custom-modal-content label {
           color: rgb(255, 255, 255) !important;
       }
       .custom-modal-content .btn-primary {
@@ -196,7 +196,7 @@ function addCustomStyles() {
           margin: 15% auto;
           padding: 20px;
           border: 1px solid #888;
-          box-shadow: 0 0 15px rgba(40, 31, 143, 0.7) !important; 
+          box-shadow: 0 0 15px rgba(40, 31, 143, 0.7) !important;
           width: 50%;
       }
       .close {
@@ -972,7 +972,7 @@ function generateModalHtml() {
             </div>
             <div class="form-group" id="bestellnummerGroup" style="display: none;">
               <label for="bestellnummer">Bestellnummer</label>
-              <input type="text" class="form-control" id="bestellnummer" placeholder="Auftrags- oder Angebotsnummer"> 
+              <input type="text" class="form-control" id="bestellnummer" placeholder="Auftrags- oder Angebotsnummer">
             </div>
             <div class="form-group">
               <label for="beschreibung">Beschreibung</label>
@@ -1094,7 +1094,7 @@ function createAndShowLeistungModal() {
                         const field = document.getElementById(fieldId);
                         if (field) {
                             field.value = value;
-                            const event = new Event('change', { bubbles: true });
+                            const event = new Event('blur', { bubbles: true });
                             field.dispatchEvent(event);
                         } else {
                             console.error(`${fieldId} field not found in form`);
@@ -1106,7 +1106,7 @@ function createAndShowLeistungModal() {
                         const shouldIgnore = isFromFernwartung && leistungText.length <= 2;
                         if(!shouldIgnore)
                             document.getElementById('text').value = leistungText;
-                    } 
+                    }
                     else {
                         console.error('text field not found in form');
                         success = false;
@@ -1299,8 +1299,9 @@ if (
     setTimeout(() => {
         const isFromFernwartung = urlParams.get("useFW") != null;
         const hasTextContent = document.getElementById('text')?.textContent.length > 2;
+        const isEditingLeistung = urlParams.get("leistungID") != null;
 
-        if(isFromFernwartung && hasTextContent) {
+        if(isFromFernwartung && hasTextContent || isEditingLeistung) {
             console.log('Skipping modal creation due to existing text content');
             return;
         }
