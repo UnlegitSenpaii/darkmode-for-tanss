@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       *://ticket.system.hostname/*
 // @grant       none
-// @version     1.8.3
+// @version     1.8.4
 // @author      github.com/UnlegitSenpaii
 // @downloadURL https://raw.githubusercontent.com/UnlegitSenpaii/darkmode-for-tanss/refs/heads/customized/violentmonkey-script.js
 // @description TANSS Ticket-System Quality of Life Improvements
@@ -1289,24 +1289,4 @@ if (
 ) {
     console.log('Creating and showing modal');
     createAndShowModal();
-}
-
-if (
-    urlParams.get('section') === 'leistungen' &&
-    urlParams.get('sub') === 'edit' &&
-    urlParams.get('init') === '1'
-) {
-    setTimeout(() => {
-        const isFromFernwartung = urlParams.get("useFW") != null;
-        const hasTextContent = document.getElementById('text')?.textContent.length > 2;
-        const isEditingLeistung = urlParams.get("leistungID") != null;
-
-        if(isFromFernwartung && hasTextContent || isEditingLeistung) {
-            console.log('Skipping modal creation due to existing text content');
-            return;
-        }
-
-        console.log('Creating and showing leistung modal');
-        createAndShowLeistungModal();
-    }, 500);
 }
